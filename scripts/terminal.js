@@ -110,14 +110,32 @@ Hooks.on("renderJournalPageSheet", (app, html, data) => {
     if (terminalSettings.enabled) {
       app.element[0].style.background = "linear-gradient(180deg, #0a0e27 0%, #050810 100%)";
       app.element[0].style.backgroundImage = "linear-gradient(180deg, #0a0e27 0%, #050810 100%)";
+      app.element[0].style.backgroundColor = "#0a0e27";
 
-      // Also apply to window-content
-      const windowContent = app.element[0].querySelector('.window-content');
-      if (windowContent) {
-        windowContent.style.background = "transparent";
-        windowContent.style.backgroundImage = "none";
-        windowContent.style.backgroundColor = "transparent";
-      }
+      // Target ALL possible content containers
+      const contentSelectors = [
+        '.window-content',
+        '.journal-page-content',
+        '.journal-entry-content',
+        '.editor-content',
+        'section.journal-entry-content',
+        '.journal-entry-page-content',
+        'section.journal-entry-page-content',
+        '.editor .ProseMirror',
+        '.prosemirror',
+        'article',
+        'section',
+        '.scrollable'
+      ];
+
+      contentSelectors.forEach(selector => {
+        const elements = app.element[0].querySelectorAll(selector);
+        elements.forEach(el => {
+          el.style.background = "transparent";
+          el.style.backgroundImage = "none";
+          el.style.backgroundColor = "transparent";
+        });
+      });
     }
   }
 

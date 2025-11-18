@@ -2,7 +2,7 @@
   "id": "terminal-journals",
   "title": "Terminal Journals",
   "description": "Transforms journal appearances into old-school computer console terminals with retro CRT aesthetics.",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "compatibility": {
     "minimum": "13",
     "verified": "13"
