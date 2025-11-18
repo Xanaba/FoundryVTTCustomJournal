@@ -1,0 +1,273 @@
+/* Terminal Journals - Old School Console Styling */
+
+/* Import retro terminal font */
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Share+Tech+Mono&display=swap');
+
+/* Main journal window styling */
+.journal-entry-page.terminal-mode,
+.journal-sheet.terminal-mode {
+  background: #000000;
+  border: 3px solid #00ff00;
+  border-radius: 8px;
+  box-shadow:
+    0 0 20px rgba(0, 255, 0, 0.3),
+    inset 0 0 80px rgba(0, 255, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+/* CRT Screen effect overlay */
+.journal-entry-page.terminal-mode::before,
+.journal-sheet.terminal-mode::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 1000;
+  animation: flicker 0.15s infinite;
+}
+
+/* Scanline animation */
+@keyframes flicker {
+  0% { opacity: 0.97; }
+  50% { opacity: 1; }
+  100% { opacity: 0.97; }
+}
+
+/* Window header */
+.journal-sheet.terminal-mode .window-header {
+  background: #001100;
+  border-bottom: 2px solid #00ff00;
+  color: #00ff00;
+  text-shadow: 0 0 5px #00ff00;
+  font-family: 'VT323', 'Share Tech Mono', monospace;
+  font-size: 1.2em;
+}
+
+.journal-sheet.terminal-mode .window-title {
+  color: #00ff00;
+  text-shadow: 0 0 5px #00ff00;
+  font-family: 'VT323', monospace;
+}
+
+/* Content area */
+.journal-entry-page.terminal-mode .editor-content,
+.journal-entry-page.terminal-mode .journal-page-content,
+.journal-sheet.terminal-mode .editor-content,
+.journal-sheet.terminal-mode .scrollable {
+  background: #000000 !important;
+  color: #00ff00 !important;
+  font-family: 'VT323', 'Share Tech Mono', monospace !important;
+  font-size: 1.1em !important;
+  line-height: 1.4 !important;
+  text-shadow: 0 0 3px #00ff00;
+  padding: 15px !important;
+}
+
+/* Text styling */
+.journal-entry-page.terminal-mode h1,
+.journal-entry-page.terminal-mode h2,
+.journal-entry-page.terminal-mode h3,
+.journal-entry-page.terminal-mode h4,
+.journal-sheet.terminal-mode h1,
+.journal-sheet.terminal-mode h2,
+.journal-sheet.terminal-mode h3,
+.journal-sheet.terminal-mode h4 {
+  color: #00ff00 !important;
+  text-shadow: 0 0 8px #00ff00;
+  border-bottom: 1px solid #00ff00;
+  font-family: 'VT323', monospace !important;
+  font-weight: normal !important;
+}
+
+.journal-entry-page.terminal-mode p,
+.journal-sheet.terminal-mode p {
+  color: #00ff00 !important;
+  margin-bottom: 0.8em;
+}
+
+/* Links */
+.journal-entry-page.terminal-mode a,
+.journal-sheet.terminal-mode a {
+  color: #00ffff !important;
+  text-decoration: underline;
+  text-shadow: 0 0 5px #00ffff;
+}
+
+.journal-entry-page.terminal-mode a:hover,
+.journal-sheet.terminal-mode a:hover {
+  color: #ffffff !important;
+  text-shadow: 0 0 8px #00ffff;
+}
+
+/* Custom scrollbar */
+.journal-entry-page.terminal-mode ::-webkit-scrollbar,
+.journal-sheet.terminal-mode ::-webkit-scrollbar {
+  width: 12px;
+  background: #000000;
+}
+
+.journal-entry-page.terminal-mode ::-webkit-scrollbar-track,
+.journal-sheet.terminal-mode ::-webkit-scrollbar-track {
+  background: #001100;
+  border: 1px solid #00ff00;
+}
+
+.journal-entry-page.terminal-mode ::-webkit-scrollbar-thumb,
+.journal-sheet.terminal-mode ::-webkit-scrollbar-thumb {
+  background: #00ff00;
+  border: 1px solid #003300;
+  box-shadow: inset 0 0 6px rgba(0, 255, 0, 0.5);
+}
+
+.journal-entry-page.terminal-mode ::-webkit-scrollbar-thumb:hover,
+.journal-sheet.terminal-mode ::-webkit-scrollbar-thumb:hover {
+  background: #00ff88;
+  box-shadow: 0 0 10px #00ff00;
+}
+
+/* Buttons */
+.journal-sheet.terminal-mode button,
+.journal-sheet.terminal-mode .header-button {
+  background: #001100;
+  color: #00ff00;
+  border: 1px solid #00ff00;
+  text-shadow: 0 0 3px #00ff00;
+  font-family: 'VT323', monospace;
+  transition: all 0.2s;
+}
+
+.journal-sheet.terminal-mode button:hover,
+.journal-sheet.terminal-mode .header-button:hover {
+  background: #003300;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+/* Input fields */
+.journal-sheet.terminal-mode input[type="text"],
+.journal-sheet.terminal-mode textarea {
+  background: #000000;
+  color: #00ff00;
+  border: 1px solid #00ff00;
+  font-family: 'VT323', 'Share Tech Mono', monospace;
+  text-shadow: 0 0 2px #00ff00;
+}
+
+/* Lists */
+.journal-entry-page.terminal-mode ul,
+.journal-entry-page.terminal-mode ol,
+.journal-sheet.terminal-mode ul,
+.journal-sheet.terminal-mode ol {
+  color: #00ff00 !important;
+}
+
+.journal-entry-page.terminal-mode li,
+.journal-sheet.terminal-mode li {
+  color: #00ff00 !important;
+}
+
+/* Blockquotes */
+.journal-entry-page.terminal-mode blockquote,
+.journal-sheet.terminal-mode blockquote {
+  border-left: 3px solid #00ff00;
+  background: #001100;
+  color: #00ff00 !important;
+  padding: 10px;
+  margin: 10px 0;
+  font-style: italic;
+}
+
+/* Code blocks */
+.journal-entry-page.terminal-mode code,
+.journal-entry-page.terminal-mode pre,
+.journal-sheet.terminal-mode code,
+.journal-sheet.terminal-mode pre {
+  background: #001100 !important;
+  color: #00ffff !important;
+  border: 1px solid #00ff00;
+  font-family: 'Share Tech Mono', monospace !important;
+  text-shadow: 0 0 3px #00ffff;
+}
+
+/* Tables */
+.journal-entry-page.terminal-mode table,
+.journal-sheet.terminal-mode table {
+  border-collapse: collapse;
+  border: 2px solid #00ff00;
+  color: #00ff00;
+}
+
+.journal-entry-page.terminal-mode th,
+.journal-entry-page.terminal-mode td,
+.journal-sheet.terminal-mode th,
+.journal-sheet.terminal-mode td {
+  border: 1px solid #00ff00;
+  padding: 8px;
+  color: #00ff00 !important;
+}
+
+.journal-entry-page.terminal-mode th,
+.journal-sheet.terminal-mode th {
+  background: #001100;
+  text-shadow: 0 0 5px #00ff00;
+}
+
+/* Images - give them a terminal border */
+.journal-entry-page.terminal-mode img,
+.journal-sheet.terminal-mode img {
+  border: 2px solid #00ff00;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+  filter: contrast(1.1) brightness(0.9);
+}
+
+/* Alternative amber theme class */
+.journal-entry-page.terminal-amber,
+.journal-sheet.terminal-amber {
+  border-color: #ffb000;
+  box-shadow:
+    0 0 20px rgba(255, 176, 0, 0.3),
+    inset 0 0 80px rgba(255, 176, 0, 0.05);
+}
+
+.journal-entry-page.terminal-amber .editor-content,
+.journal-entry-page.terminal-amber .journal-page-content,
+.journal-sheet.terminal-amber .scrollable {
+  color: #ffb000 !important;
+  text-shadow: 0 0 3px #ffb000;
+}
+
+.journal-entry-page.terminal-amber h1,
+.journal-entry-page.terminal-amber h2,
+.journal-entry-page.terminal-amber h3,
+.journal-sheet.terminal-amber h1,
+.journal-sheet.terminal-amber h2,
+.journal-sheet.terminal-amber h3 {
+  color: #ffb000 !important;
+  text-shadow: 0 0 8px #ffb000;
+  border-bottom-color: #ffb000;
+}
+
+/* Cursor blink effect for added authenticity */
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.terminal-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 1em;
+  background: #00ff00;
+  margin-left: 2px;
+  animation: blink 1s infinite;
+}
