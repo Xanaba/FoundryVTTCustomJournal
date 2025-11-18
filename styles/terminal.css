@@ -76,10 +76,17 @@
   animation: scanline 8s linear infinite, flicker 0.15s infinite;
 }
 
-/* Scanline animation with cyberpunk movement */
+/* Scanline animation - fixed to prevent page growth */
 @keyframes scanline {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(100vh); }
+  0% {
+    opacity: 0.95;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.95;
+  }
 }
 
 @keyframes flicker {
@@ -548,16 +555,29 @@
 /* Journal Page Content - Force Cyberpunk Theme */
 /* ============================================ */
 
-/* Ensure journal page sheets get the full theme */
+/* Ensure journal page sheets get the full theme - targeting all variants */
 .journal-entry-page.terminal-mode .journal-entry-page,
 .journal-entry-page.terminal-mode,
-.window-app.journal-entry-page.terminal-mode {
+.window-app.journal-entry-page.terminal-mode,
+.window-app.sheet.journal-entry-page.terminal-mode,
+body .window-app.journal-entry-page.terminal-mode {
   background: linear-gradient(180deg, #0a0e27 0%, #050810 100%) !important;
+  background-image: none !important;
 }
 
-/* Journal page content area */
+/* Journal page content area - remove parchment */
 .journal-entry-page.terminal-mode .scrollable,
-.journal-entry-page.terminal-mode .journal-page-content {
+.journal-entry-page.terminal-mode .journal-page-content,
+.journal-entry-page.terminal-mode .window-content,
+.journal-entry-page.terminal-mode article {
+  background: transparent !important;
+  background-image: none !important;
+  background-color: transparent !important;
+}
+
+/* Target ProseMirror editor if present */
+.journal-entry-page.terminal-mode .editor,
+.journal-entry-page.terminal-mode .ProseMirror {
   background: transparent !important;
   background-image: none !important;
   background-color: transparent !important;
@@ -611,17 +631,17 @@
   color: #ff00ff;
   font-family: 'Orbitron', monospace;
   font-weight: 700;
-  font-size: 1.1em;
+  font-size: 0.85em;
   text-align: center;
-  padding: 12px 10px;
-  margin-bottom: 10px;
+  padding: 8px 6px;
+  margin-bottom: 8px;
   border-bottom: 2px solid #00ffff;
-  text-shadow: 
+  text-shadow:
     0 0 10px #ff00ff,
     0 0 20px #ff00ff;
-  letter-spacing: 3px;
-  background: linear-gradient(90deg, 
-    rgba(255, 0, 255, 0.1) 0%, 
+  letter-spacing: 2px;
+  background: linear-gradient(90deg,
+    rgba(255, 0, 255, 0.1) 0%,
     rgba(0, 255, 255, 0.1) 50%,
     rgba(255, 0, 255, 0.1) 100%);
 }
@@ -661,14 +681,16 @@
     inset 0 0 10px rgba(0, 255, 255, 0.1);
 }
 
-/* Page names/titles */
+/* Page names/titles - 2 sizes bigger and bold */
 .journal-sheet.terminal-mode .directory-list .directory-item h4,
 .journal-sheet.terminal-mode .directory-list .directory-item .page-name,
-.journal-sheet.terminal-mode .pages-list .page h4 {
+.journal-sheet.terminal-mode .pages-list .page h4,
+.journal-sheet.terminal-mode .pages-list .page .page-heading {
   color: #00ffff !important;
   text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
   font-family: 'Rajdhani', monospace !important;
-  font-weight: 600 !important;
+  font-weight: 700 !important;
+  font-size: 1.2em !important;
   margin: 0 !important;
 }
 
