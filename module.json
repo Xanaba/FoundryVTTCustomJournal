@@ -1,0 +1,24 @@
+{
+  "id": "terminal-journals",
+  "title": "Terminal Journals",
+  "description": "Transforms journal appearances into old-school computer console terminals with retro CRT aesthetics.",
+  "version": "1.0.0",
+  "compatibility": {
+    "minimum": "13",
+    "verified": "13"
+  },
+  "authors": [
+    {
+      "name": "Terminal Journals Team"
+    }
+  ],
+  "esmodules": [
+    "scripts/terminal.js"
+  ],
+  "styles": [
+    "styles/terminal.css"
+  ],
+  "url": "https://github.com/Xanaba/FoundryVTTCustomJournal",
+  "manifest": "https://raw.githubusercontent.com/Xanaba/FoundryVTTCustomJournal/main/module.json",
+  "download": "https://github.com/Xanaba/FoundryVTTCustomJournal/archive/refs/heads/main.zip"
+}
