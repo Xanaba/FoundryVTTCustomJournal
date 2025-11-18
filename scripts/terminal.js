@@ -76,9 +76,7 @@ Hooks.once("init", () => {
  * Hook into journal sheet rendering
  */
 Hooks.on("renderJournalSheet", (app, html, data) => {
-  if (!terminalSettings.enabled) return;
-
-  console.log("Terminal Journals | Applying terminal style to journal");
+  console.log("Terminal Journals | Processing journal sheet render");
 
   // Apply terminal class to the journal window
   if (app.element && app.element[0]) {
@@ -90,8 +88,8 @@ Hooks.on("renderJournalSheet", (app, html, data) => {
     applyTerminalStyle(html[0]);
   }
 
-  // Add boot-up effect for new journals
-  if (app._state === 1) { // First render
+  // Add boot-up effect for new journals (only if enabled)
+  if (terminalSettings.enabled && app._state === 1) { // First render
     if (html && html[0]) {
       addBootUpEffect(html[0]);
     }
@@ -102,9 +100,7 @@ Hooks.on("renderJournalSheet", (app, html, data) => {
  * Hook into journal page rendering
  */
 Hooks.on("renderJournalPageSheet", (app, html, data) => {
-  if (!terminalSettings.enabled) return;
-
-  console.log("Terminal Journals | Applying terminal style to journal page");
+  console.log("Terminal Journals | Processing journal page render");
 
   // Apply to the page window element
   if (app.element && app.element[0]) {
@@ -118,7 +114,7 @@ Hooks.on("renderJournalPageSheet", (app, html, data) => {
 });
 
 /**
- * Apply terminal styling to an element
+ * Apply or remove terminal styling from an element
  */
 function applyTerminalStyle(element) {
   if (!element) return;
@@ -127,7 +123,14 @@ function applyTerminalStyle(element) {
   const domElement = element instanceof jQuery ? element[0] : element;
   if (!domElement) return;
 
-  // Remove existing terminal classes
+  // If terminal mode is disabled, remove all terminal styling
+  if (!terminalSettings.enabled) {
+    domElement.classList.remove("terminal-mode", "terminal-amber");
+    domElement.style.removeProperty("--scanline-opacity");
+    return;
+  }
+
+  // Remove existing terminal classes first
   domElement.classList.remove("terminal-mode", "terminal-amber");
 
   // Apply appropriate class based on theme
