@@ -555,29 +555,50 @@
 /* Journal Page Content - Force Cyberpunk Theme */
 /* ============================================ */
 
-/* Ensure journal page sheets get the full theme - targeting all variants */
-.journal-entry-page.terminal-mode .journal-entry-page,
-.journal-entry-page.terminal-mode,
-.window-app.journal-entry-page.terminal-mode,
+/* AGGRESSIVE: Force journal page background with maximum specificity */
+html body #ui .window-app.journal-entry-page.terminal-mode,
+body .window-app.journal-entry-page.terminal-mode,
 .window-app.sheet.journal-entry-page.terminal-mode,
-body .window-app.journal-entry-page.terminal-mode {
+.journal-entry-page.terminal-mode,
+div.window-app.journal-entry-page.terminal-mode {
   background: linear-gradient(180deg, #0a0e27 0%, #050810 100%) !important;
   background-image: none !important;
+  background-color: #0a0e27 !important;
 }
 
-/* Journal page content area - remove parchment */
-.journal-entry-page.terminal-mode .scrollable,
-.journal-entry-page.terminal-mode .journal-page-content,
+/* Force window content background */
+html body .journal-entry-page.terminal-mode .window-content,
 .journal-entry-page.terminal-mode .window-content,
-.journal-entry-page.terminal-mode article {
+.window-app.journal-entry-page.terminal-mode .window-content {
   background: transparent !important;
   background-image: none !important;
   background-color: transparent !important;
 }
 
-/* Target ProseMirror editor if present */
+/* Remove parchment from all content areas */
+html body .journal-entry-page.terminal-mode .scrollable,
+.journal-entry-page.terminal-mode .scrollable,
+.journal-entry-page.terminal-mode .journal-page-content,
+.journal-entry-page.terminal-mode article,
+.journal-entry-page.terminal-mode .journal-entry-page-content {
+  background: transparent !important;
+  background-image: none !important;
+  background-color: transparent !important;
+}
+
+/* Target ProseMirror editor with high specificity */
+html body .journal-entry-page.terminal-mode .editor,
+html body .journal-entry-page.terminal-mode .ProseMirror,
 .journal-entry-page.terminal-mode .editor,
 .journal-entry-page.terminal-mode .ProseMirror {
+  background: transparent !important;
+  background-image: none !important;
+  background-color: transparent !important;
+}
+
+/* Also target any .journal-page classes */
+.journal-entry-page.terminal-mode .journal-page,
+html body .journal-entry-page.terminal-mode .journal-page {
   background: transparent !important;
   background-image: none !important;
   background-color: transparent !important;
