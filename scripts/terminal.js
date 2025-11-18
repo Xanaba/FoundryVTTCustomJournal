@@ -81,17 +81,20 @@ Hooks.on("renderJournalSheet", (app, html, data) => {
   console.log("Terminal Journals | Applying terminal style to journal");
 
   // Apply terminal class to the journal window
-  const journalElement = html.closest(".journal-sheet");
-  if (journalElement) {
-    applyTerminalStyle(journalElement);
+  if (app.element && app.element[0]) {
+    applyTerminalStyle(app.element[0]);
   }
 
   // Also apply to the content area
-  applyTerminalStyle(html[0]);
+  if (html && html[0]) {
+    applyTerminalStyle(html[0]);
+  }
 
   // Add boot-up effect for new journals
   if (app._state === 1) { // First render
-    addBootUpEffect(html[0]);
+    if (html && html[0]) {
+      addBootUpEffect(html[0]);
+    }
   }
 });
 
@@ -103,12 +106,15 @@ Hooks.on("renderJournalPageSheet", (app, html, data) => {
 
   console.log("Terminal Journals | Applying terminal style to journal page");
 
-  const pageElement = html.closest(".journal-entry-page");
-  if (pageElement) {
-    applyTerminalStyle(pageElement);
+  // Apply to the page window element
+  if (app.element && app.element[0]) {
+    applyTerminalStyle(app.element[0]);
   }
 
-  applyTerminalStyle(html[0]);
+  // Apply to the content area
+  if (html && html[0]) {
+    applyTerminalStyle(html[0]);
+  }
 });
 
 /**
@@ -117,21 +123,25 @@ Hooks.on("renderJournalPageSheet", (app, html, data) => {
 function applyTerminalStyle(element) {
   if (!element) return;
 
+  // Convert jQuery object to native DOM element if needed
+  const domElement = element instanceof jQuery ? element[0] : element;
+  if (!domElement) return;
+
   // Remove existing terminal classes
-  element.classList.remove("terminal-mode", "terminal-amber");
+  domElement.classList.remove("terminal-mode", "terminal-amber");
 
   // Apply appropriate class based on theme
   if (terminalSettings.theme === "amber") {
-    element.classList.add("terminal-mode", "terminal-amber");
+    domElement.classList.add("terminal-mode", "terminal-amber");
   } else {
-    element.classList.add("terminal-mode");
+    domElement.classList.add("terminal-mode");
   }
 
   // Handle scanlines
   if (!terminalSettings.scanlines) {
-    element.style.setProperty("--scanline-opacity", "0");
+    domElement.style.setProperty("--scanline-opacity", "0");
   } else {
-    element.style.removeProperty("--scanline-opacity");
+    domElement.style.removeProperty("--scanline-opacity");
   }
 }
 
