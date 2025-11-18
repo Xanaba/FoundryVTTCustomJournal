@@ -158,12 +158,13 @@ function addBootUpEffect(element) {
   // Store original content
   const originalContent = contentArea.innerHTML;
 
-  // Create boot sequence
+  // Create cyberpunk boot sequence
   const bootSequence = [
-    "> SYSTEM BOOT SEQUENCE INITIATED...",
-    "> LOADING JOURNAL DATABASE...",
-    "> TERMINAL INTERFACE READY",
-    "> _"
+    "<span style='color: #ff00ff;'>◢◤◢◤</span> <span style='color: #00ffff;'>CYBERLINK PROTOCOL INITIALIZING...</span>",
+    "<span style='color: #00ff99;'>▸</span> NEURAL INTERFACE: <span style='color: #00ffff;'>CONNECTED</span>",
+    "<span style='color: #00ff99;'>▸</span> DATABASE ACCESS: <span style='color: #00ffff;'>GRANTED</span>",
+    "<span style='color: #00ff99;'>▸</span> ENCRYPTION LAYER: <span style='color: #00ffff;'>ACTIVE</span>",
+    "<span style='color: #ff00ff;'>◢◤◢◤</span> <span style='color: #00ffff;'>SYSTEM READY</span> <span style='color: #ff00ff;'>◢◤◢◤</span>"
   ];
 
   // Temporarily replace content with boot sequence
@@ -230,13 +231,14 @@ Hooks.on("getJournalSheetHeaderButtons", (app, buttons) => {
  */
 Hooks.once("ready", () => {
   if (terminalSettings.enabled) {
-    console.log(`
+    console.log(`%c
 ╔════════════════════════════════════════╗
-║   TERMINAL JOURNALS MODULE LOADED      ║
-║   Old School Console Mode: ACTIVE      ║
-║   Theme: ${terminalSettings.theme.toUpperCase().padEnd(27)}║
+║ ◢◤ TERMINAL JOURNALS :: CYBERPUNK ◢◤   ║
+║ ▸ Neural Interface: CONNECTED          ║
+║ ▸ Theme: ${terminalSettings.theme.toUpperCase().padEnd(29)}║
+║ ▸ Cyberlink Status: ACTIVE             ║
 ╚════════════════════════════════════════╝
-    `);
+    `, 'color: #00ffff; text-shadow: 0 0 10px #00ffff; font-family: monospace;');
   }
 });
 
