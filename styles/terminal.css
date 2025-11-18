@@ -758,3 +758,75 @@ html body .journal-entry-page.terminal-mode .journal-page {
   padding: 10px;
 }
 
+
+/* ============================================ */
+/* CRITICAL FIX: Journal Content Background Override */
+/* Target ALL journal content containers specifically */
+/* ============================================ */
+
+/* Main content containers - HIGHEST PRIORITY */
+.terminal-mode .journal-page-content,
+.terminal-mode .journal-entry-content,
+.terminal-mode .editor-content,
+.terminal-mode section.journal-entry-content,
+.journal-sheet.terminal-mode .journal-page-content,
+.journal-sheet.terminal-mode .journal-entry-content,
+.journal-sheet.terminal-mode .editor-content,
+.journal-entry-page.terminal-mode .journal-page-content,
+.journal-entry-page.terminal-mode .journal-entry-content,
+.journal-entry-page.terminal-mode .editor-content,
+.window-app.terminal-mode .journal-page-content,
+.window-app.terminal-mode .journal-entry-content,
+.window-app.terminal-mode .editor-content,
+.window-app.terminal-mode section.journal-entry-content {
+  background-color: transparent !important;
+  background-image: none !important;
+  background: transparent !important;
+}
+
+/* ProseMirror editor - specific targeting */
+.terminal-mode .editor .ProseMirror,
+.terminal-mode .prosemirror,
+.journal-entry-page.terminal-mode .editor .ProseMirror,
+.journal-entry-page.terminal-mode .prosemirror,
+.journal-sheet.terminal-mode .editor .ProseMirror {
+  background-color: transparent !important;
+  background-image: none !important;
+  background: transparent !important;
+}
+
+/* Window content - must be transparent to show window background */
+.window-app.terminal-mode .window-content,
+.journal-sheet.terminal-mode .window-content,
+.journal-entry-page.terminal-mode .window-content {
+  background-color: transparent !important;
+  background-image: none !important;
+  background: transparent !important;
+}
+
+/* Journal entry page content specifically */
+.journal-entry-page.terminal-mode .journal-entry-page-content,
+section.journal-entry-page-content.terminal-mode,
+.terminal-mode section.journal-entry-page-content {
+  background-color: transparent !important;
+  background-image: none !important;
+  background: transparent !important;
+}
+
+/* Article and section elements */
+.terminal-mode article,
+.terminal-mode section,
+.journal-entry-page.terminal-mode article,
+.journal-entry-page.terminal-mode section {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* Scrollable containers */
+.terminal-mode .scrollable,
+.journal-entry-page.terminal-mode .scrollable,
+.journal-sheet.terminal-mode .scrollable {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
