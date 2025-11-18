@@ -1,0 +1,1 @@
+A foundry VTT module to give Journals the look and feel of computer terminals
