@@ -105,6 +105,20 @@ Hooks.on("renderJournalPageSheet", (app, html, data) => {
   // Apply to the page window element
   if (app.element && app.element[0]) {
     applyTerminalStyle(app.element[0]);
+
+    // Force background via inline styles for journal pages
+    if (terminalSettings.enabled) {
+      app.element[0].style.background = "linear-gradient(180deg, #0a0e27 0%, #050810 100%)";
+      app.element[0].style.backgroundImage = "linear-gradient(180deg, #0a0e27 0%, #050810 100%)";
+
+      // Also apply to window-content
+      const windowContent = app.element[0].querySelector('.window-content');
+      if (windowContent) {
+        windowContent.style.background = "transparent";
+        windowContent.style.backgroundImage = "none";
+        windowContent.style.backgroundColor = "transparent";
+      }
+    }
   }
 
   // Apply to the content area
@@ -127,6 +141,8 @@ function applyTerminalStyle(element) {
   if (!terminalSettings.enabled) {
     domElement.classList.remove("terminal-mode", "terminal-amber");
     domElement.style.removeProperty("--scanline-opacity");
+    domElement.style.removeProperty("background");
+    domElement.style.removeProperty("background-image");
     return;
   }
 
