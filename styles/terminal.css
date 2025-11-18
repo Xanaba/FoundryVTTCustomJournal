@@ -543,3 +543,175 @@
   box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
   margin: 20px 0;
 }
+
+/* ============================================ */
+/* Journal Page Content - Force Cyberpunk Theme */
+/* ============================================ */
+
+/* Ensure journal page sheets get the full theme */
+.journal-entry-page.terminal-mode .journal-entry-page,
+.journal-entry-page.terminal-mode,
+.window-app.journal-entry-page.terminal-mode {
+  background: linear-gradient(180deg, #0a0e27 0%, #050810 100%) !important;
+}
+
+/* Journal page content area */
+.journal-entry-page.terminal-mode .scrollable,
+.journal-entry-page.terminal-mode .journal-page-content {
+  background: transparent !important;
+  background-image: none !important;
+  background-color: transparent !important;
+}
+
+/* ============================================ */
+/* Search Pages Box - Cyberpunk Style */
+/* ============================================ */
+
+/* Search box container */
+.journal-sheet.terminal-mode .directory-list,
+.journal-sheet.terminal-mode .journal-sidebar {
+  background: rgba(10, 14, 39, 0.6) !important;
+  border-right: 2px solid #00ffff;
+}
+
+/* Search input field */
+.journal-sheet.terminal-mode input[type="search"],
+.journal-sheet.terminal-mode .search-pages,
+.journal-sheet.terminal-mode .directory-list input {
+  background: rgba(10, 14, 39, 0.9) !important;
+  border: 2px solid #00ffff !important;
+  color: #00ffff !important;
+  font-family: 'Rajdhani', monospace !important;
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+  padding: 8px 12px !important;
+  border-radius: 0 !important;
+  transition: all 0.3s;
+}
+
+.journal-sheet.terminal-mode input[type="search"]:focus,
+.journal-sheet.terminal-mode .search-pages:focus {
+  border-color: #ff00ff !important;
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.5) !important;
+  outline: none !important;
+}
+
+.journal-sheet.terminal-mode input[type="search"]::placeholder {
+  color: rgba(0, 255, 255, 0.5) !important;
+  font-style: italic;
+}
+
+/* ============================================ */
+/* Nav Menu Label - Above Page List */
+/* ============================================ */
+
+/* Add "Nav Menu" label before the page list */
+.journal-sheet.terminal-mode .directory-list::before {
+  content: "◢◤ NAV MENU ◤◢";
+  display: block;
+  color: #ff00ff;
+  font-family: 'Orbitron', monospace;
+  font-weight: 700;
+  font-size: 1.1em;
+  text-align: center;
+  padding: 12px 10px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #00ffff;
+  text-shadow: 
+    0 0 10px #ff00ff,
+    0 0 20px #ff00ff;
+  letter-spacing: 3px;
+  background: linear-gradient(90deg, 
+    rgba(255, 0, 255, 0.1) 0%, 
+    rgba(0, 255, 255, 0.1) 50%,
+    rgba(255, 0, 255, 0.1) 100%);
+}
+
+/* ============================================ */
+/* Page List - Cyberpunk Navigation */
+/* ============================================ */
+
+/* Page list items */
+.journal-sheet.terminal-mode .directory-list .directory-item,
+.journal-sheet.terminal-mode .pages-list .page {
+  background: rgba(10, 14, 39, 0.4) !important;
+  border: 1px solid rgba(0, 255, 255, 0.3) !important;
+  border-left: 3px solid #00ffff !important;
+  margin: 4px 6px !important;
+  padding: 8px !important;
+  transition: all 0.3s;
+  color: #00ffff !important;
+  font-family: 'Rajdhani', monospace !important;
+}
+
+.journal-sheet.terminal-mode .directory-list .directory-item:hover,
+.journal-sheet.terminal-mode .pages-list .page:hover {
+  background: rgba(0, 255, 255, 0.15) !important;
+  border-left-color: #ff00ff !important;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+  transform: translateX(3px);
+}
+
+.journal-sheet.terminal-mode .directory-list .directory-item.active,
+.journal-sheet.terminal-mode .pages-list .page.active {
+  background: rgba(255, 0, 255, 0.2) !important;
+  border: 1px solid #ff00ff !important;
+  border-left: 3px solid #ff00ff !important;
+  box-shadow: 
+    0 0 15px rgba(255, 0, 255, 0.4),
+    inset 0 0 10px rgba(0, 255, 255, 0.1);
+}
+
+/* Page names/titles */
+.journal-sheet.terminal-mode .directory-list .directory-item h4,
+.journal-sheet.terminal-mode .directory-list .directory-item .page-name,
+.journal-sheet.terminal-mode .pages-list .page h4 {
+  color: #00ffff !important;
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+  font-family: 'Rajdhani', monospace !important;
+  font-weight: 600 !important;
+  margin: 0 !important;
+}
+
+/* Page level indicators */
+.journal-sheet.terminal-mode .page-heading {
+  border-left-color: #ff00ff !important;
+  background: rgba(255, 0, 255, 0.1) !important;
+}
+
+/* Folder icons and controls */
+.journal-sheet.terminal-mode .directory-list i,
+.journal-sheet.terminal-mode .pages-list i {
+  color: #00ffff !important;
+  text-shadow: 0 0 5px #00ffff;
+}
+
+.journal-sheet.terminal-mode .directory-list .directory-item:hover i,
+.journal-sheet.terminal-mode .pages-list .page:hover i {
+  color: #ff00ff !important;
+  text-shadow: 0 0 8px #ff00ff;
+}
+
+/* ============================================ */
+/* Sidebar Section Headers */
+/* ============================================ */
+
+.journal-sheet.terminal-mode .sidebar-header {
+  background: linear-gradient(90deg, #0a0e27 0%, #1a1e3f 100%);
+  border-bottom: 2px solid #00ffff;
+  color: #00ffff !important;
+  font-family: 'Orbitron', monospace;
+  text-shadow: 0 0 8px #00ffff;
+  padding: 10px;
+}
+
+/* ============================================ */
+/* Journal Footer/Controls */
+/* ============================================ */
+
+.journal-sheet.terminal-mode .journal-footer,
+.journal-sheet.terminal-mode .form-footer {
+  background: linear-gradient(90deg, #0a0e27 0%, #1a1e3f 100%);
+  border-top: 2px solid #00ffff;
+  padding: 10px;
+}
+
