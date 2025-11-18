@@ -6,19 +6,32 @@
 /* Main journal window styling - Cyberpunk theme */
 .journal-entry-page.terminal-mode,
 .journal-sheet.terminal-mode {
-  background: linear-gradient(180deg, #0a0e27 0%, #050810 100%);
+  background: linear-gradient(180deg, #0a0e27 0%, #050810 100%) !important;
   border: 2px solid #00ffff;
   border-radius: 0;
   box-shadow:
     0 0 30px rgba(0, 255, 255, 0.6),
     0 0 60px rgba(255, 0, 255, 0.3),
     inset 0 0 100px rgba(0, 255, 255, 0.03);
+}
+
+/* Ensure the window itself gets the background */
+.window-app.journal-sheet.terminal-mode {
+  background: linear-gradient(180deg, #0a0e27 0%, #050810 100%) !important;
+}
+
+/* Don't interfere with Foundry's window positioning */
+/* Remove any positioning that could cause issues */
+
+/* Apply position relative only to window-content for overlays */
+.journal-sheet.terminal-mode .window-content,
+.journal-entry-page.terminal-mode {
   position: relative;
 }
 
-/* Cyberpunk corner brackets */
-.journal-entry-page.terminal-mode::after,
-.journal-sheet.terminal-mode::after {
+/* Cyberpunk corner brackets - apply to window-content and journal pages */
+.journal-sheet.terminal-mode .window-content::after,
+.journal-entry-page.terminal-mode::after {
   content: "";
   position: absolute;
   top: 0;
@@ -41,9 +54,9 @@
   filter: drop-shadow(0 0 5px #00ffff);
 }
 
-/* CRT Screen effect overlay with cyberpunk scanlines */
-.journal-entry-page.terminal-mode::before,
-.journal-sheet.terminal-mode::before {
+/* CRT Screen effect overlay with cyberpunk scanlines - apply to window-content and journal pages */
+.journal-sheet.terminal-mode .window-content::before,
+.journal-entry-page.terminal-mode::before {
   content: "";
   position: absolute;
   top: 0;
@@ -152,7 +165,8 @@
 .journal-entry-page.terminal-mode .editor-content,
 .journal-entry-page.terminal-mode .journal-page-content,
 .journal-sheet.terminal-mode .editor-content,
-.journal-sheet.terminal-mode .scrollable {
+.journal-sheet.terminal-mode .scrollable,
+.journal-sheet.terminal-mode .window-content {
   background: transparent !important;
   color: #00ffff !important;
   font-family: 'Rajdhani', 'Share Tech Mono', monospace !important;
@@ -162,6 +176,13 @@
   text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
   padding: 20px !important;
   letter-spacing: 0.5px;
+}
+
+/* Override parchment background texture */
+.journal-sheet.terminal-mode .window-content,
+.journal-entry-page.terminal-mode {
+  background-image: none !important;
+  background-color: transparent !important;
 }
 
 /* Text styling - Neon cyberpunk */
